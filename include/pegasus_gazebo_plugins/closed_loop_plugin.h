@@ -15,12 +15,50 @@
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/common.hh>
+
+// #include <gazebo/rendering/ogre_gazebo.h>
+// #include <gazebo/rendering/DynamicLines.hh>
+// #include <gazebo/rendering/Visual.hh>
+// #include <gazebo/rendering/JointVisual.hh>
+// #include <gazebo/rendering/ArrowVisual.hh>
+#include <gazebo/rendering/rendering.hh>
+#include <gazebo/rendering/Visual.hh>
+#include <math.h>
+
+
+// #include <gazebo/rendering/UserCamera.hh>
+// #include <gazebo/rendering/Scene.hh>
+// #include <gazebo/rendering/RenderTypes.hh>
+
+#include <ignition/common/Console.hh>
+#include <gazebo/transport/TransportIface.hh>
+#include <gazebo/msgs/msgs.hh>
+
+// #include <ignition/rendering/Scene.hh>
+
+// #include <ignition/msgs/Utility.hh>
+
+// #include "ignition/rendering/Capsule.hh>
+// #include <ignition/rendering/COMVisual.hh>
+// #include <ignition/rendering/Geometry.hh>
+// #include <ignition/rendering/Heightmap.hh>
+// #include <ignition/rendering/HeightmapDescriptor.hh>
+// #include <ignition/rendering/InertiaVisual.hh>
+// #include <ignition/rendering/JointVisual.hh>
+
+
+
 //
 #include <ignition/math/Pose3.hh>
 #include <vector>
 
+
+// #define GAZEBO_VISIBLE
+
+
 namespace gazebo
-{
+
+{ typedef rendering::DynamicLines* LinePtr;
   class ClosedLoopPlugin : public ModelPlugin
   {
     public:
@@ -29,6 +67,8 @@ namespace gazebo
 
       void Load(physics::ModelPtr _parent, sdf::ElementPtr _sdf);
       void UpdateChild();
+   
+
 
     private:
       std::vector<float> Convert_to_float(const std::vector<std::string>& subject);
@@ -60,6 +100,27 @@ namespace gazebo
 
       // Pointer to the update event connection
       event::ConnectionPtr updateConnection;
+
+   
+
+      rendering::JointVisualPtr joint_Visual;
+
+      LinePtr forceVector;
+
+      rendering::VisualPtr  rendering_vis;
+      
+      // rendering::ArrowVisualPtr arraow_vis;
+
+  
+
+
+  
+
+
+  
+
+      
+  
 
   };
 }

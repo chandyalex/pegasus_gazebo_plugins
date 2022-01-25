@@ -8,14 +8,19 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp 
   gazebo_ros
   control_toolbox
+  ignition-math6
+  
+
 )
 
 # Depend on system install of Gazebo
 find_package(gazebo REQUIRED)
 find_package(Boost REQUIRED)
+find_package(ignition-math6 REQUIRED)
+
 
 link_directories(${GAZEBO_LIBRARY_DIRS})
-include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} include)
+include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${gazebo-rendering_INCLUDE_DIRS} include)
 
 add_library(pegasus_gazebo_closed_loop_plugin src/closed_loop_plugin.cpp)
 target_link_libraries(pegasus_gazebo_closed_loop_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
